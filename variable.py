@@ -14,3 +14,7 @@ print(y)
 print(z)
 print(z)
 print(x)
+x=5
+y=8
+z=13
+print(z)

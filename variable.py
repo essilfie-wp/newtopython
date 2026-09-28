@@ -24,8 +24,8 @@ def myfunc():
     print("Python is "+ x)
 myfunc()
 
-def myfunc()
-    global=x
+def myfunc():
+    global x
 x="fantastic"
 
 myfunc()

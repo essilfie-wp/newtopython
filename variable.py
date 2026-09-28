@@ -18,3 +18,8 @@ x=5
 y=8
 z=13
 print(z)
+
+x="awesome"
+def myfunc():
+    print("Python is "+ x)
+myfunc()

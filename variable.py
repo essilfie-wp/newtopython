@@ -37,6 +37,6 @@ def myfunc():
 
 y="cool"
 def myfunc():
-    print("Python is "+ a)
+    print("Python is "+ y)
 myfunc()
 

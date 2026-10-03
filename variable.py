@@ -35,7 +35,7 @@ y="excellent"
 def myfunc():
     print("Python is "+ y)
 
-y="cool"
+y="cool 2"
 def myfunc():
     print("Python is "+ y)
 myfunc()

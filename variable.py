@@ -40,3 +40,14 @@ def myfunc():
     print("Python is "+ y)
 myfunc()
 
+#assigment
+x=5
+y="John"
+print(type(x))
+
+x=5
+print(type(x))
+x="matthew"
+print(type(x))
+x=5.5
+print(type(x))

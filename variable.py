@@ -49,5 +49,5 @@ x=5
 print(type(x))
 x="matthew"
 print(type(x))
-x=5.5
-print(type(x))
+y=5.5
+print(type(y))

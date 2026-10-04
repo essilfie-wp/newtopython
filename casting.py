@@ -1,0 +1,8 @@
+x=int(5.4)
+y=float(6)
+z=complex(3+6)
+print(x)
+print(y)
+print(z)
+g=str("22")
+print(g)

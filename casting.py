@@ -6,3 +6,7 @@ print(y)
 print(z)
 g=str("22")
 print(g)
+
+x=str("s1")
+y=str(3.0)
+z=str(3+6j)

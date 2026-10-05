@@ -21,5 +21,23 @@ for x in "banana":
    print(r)
    for eight in "mother":
     print(eight)
+i="banana"
+print(len(i))
+u="fruit"
+print(len(u))
+y="grapejuice isn't nice"
+print(len(y))
 
+txt="the best things in life are free"
+print("free" in txt)
 
+txt="I love Python"
+print("in" in txt)
+
+txt="I love Javascript"
+print("I" in txt)
+txt="I love Javascript"
+if "love" in txt:
+ print("Yes, 'love' is present.")
+ txt="I love Javascript"
+print('expensive' not in txt)

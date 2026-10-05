@@ -41,3 +41,14 @@ if "love" in txt:
  print("Yes, 'love' is present.")
  txt="I love Javascript"
 print('expensive' not in txt)
+
+
+b="hello world?"
+print(b[2:5])
+o="yaw has yam"
+print(o[:5])
+i="heart"
+print(i[2:])
+b="Hello, World!"
+print(b[-5:-2])
+

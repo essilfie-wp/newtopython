@@ -10,3 +10,9 @@ print(g)
 x=str("s1")
 y=str(3.0)
 z=str(3+6j)
+
+x=1
+a=float(x)
+b=str(x)
+print(a)
+print(b)

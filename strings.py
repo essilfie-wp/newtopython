@@ -12,3 +12,14 @@ print(q[1])
 i="hydd?"
 print(i[2])
 print(i[3]) 
+
+for x in "banana":
+ print(x)  
+ for l in "ghana":
+  print(l)
+  for r in "father":
+   print(r)
+   for eight in "mother":
+    print(eight)
+
+

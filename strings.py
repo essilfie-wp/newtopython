@@ -52,3 +52,44 @@ print(i[2:])
 b="Hello, World!"
 print(b[-5:-2])
 
+
+h="Hii Matthew"
+print(h.upper())
+u="I DON'T HAVE A PEN"
+print(u.lower())
+j="      to love is to live    " 
+print(j.strip())
+k="what's your name?"
+print(k.upper())
+print(k.strip())
+i="I love my life"
+print(i.replace("love","hate"))
+j="Matthew is amazing"
+print(j.replace("Matthew","Shedeur"))
+y="i need food"
+print(y.replace("need","love"))
+k="you love Dieu"
+print(k.split("love"))
+h="how are youuuuu"
+print(h.split("are"))
+
+
+a="hello"
+b="world"
+c=a+b
+print(c)
+a="matthew"
+b="essilfie"
+c=a+" "+b
+print(c)
+age=56
+txt=f"my name is Matthew and i am {age}"
+print(txt)
+price=34
+txt=f"the price of a ceres drink is {price} cedis"
+print(txt)
+hard=78
+txt=f"the price of bottled water is {hard:2f} cedis"
+print(txt)
+txt = f"The price is {20 * 59} dollars"
+print(txt)

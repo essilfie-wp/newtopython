@@ -19,8 +19,8 @@ for x in "banana":
   print(l)
   for r in "father":
    print(r)
-   for eight in "mother":
-    print(eight)
+   for one in "mother":
+    print(one)
 i="banana"
 print(len(i))
 u="fruit"
@@ -92,4 +92,7 @@ hard=78
 txt=f"the price of bottled water is {hard:2f} cedis"
 print(txt)
 txt = f"The price is {20 * 59} dollars"
+print(txt)
+
+txt="Can mummy \"prepare\" Stew?"
 print(txt)

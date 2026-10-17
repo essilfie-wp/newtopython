@@ -15,12 +15,12 @@ print(i[3])
 
 for x in "banana":
  print(x)  
- for l in "ghana":
+for l in "ghana":
   print(l)
-  for r in "father":
-   print(r)
-   for one in "mother":
-    print(one)
+for r in "father":
+ print(r)
+for eight in "mother":
+ print(eight)
 i="banana"
 print(len(i))
 u="fruit"
@@ -96,6 +96,3 @@ print(txt)
 
 txt="Can mummy \"prepare\" Stew?"
 print(txt)
-txt="amazon \bis\b the best"
-print(txt)
-

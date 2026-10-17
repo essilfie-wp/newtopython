@@ -96,3 +96,6 @@ print(txt)
 
 txt="Can mummy \"prepare\" Stew?"
 print(txt)
+txt="amazon \bis\b the best"
+print(txt)
+

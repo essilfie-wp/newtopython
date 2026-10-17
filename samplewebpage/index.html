@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyFlow Studio — Interactive Python Web App</title>
+    <meta name="description" content="A modern, high-performance interactive Python web application ready for Netlify deployment. Built with Python WebAssembly.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20%220%22%20%22100%22%20%22100%22><text y=%22.9em%22 font-size=%2290%22>🐍</text></svg>">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- PyScript 2024 (Modern Core WebAssembly Runtime) -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.10.2/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.10.2/core.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="logo-badge">
+                    <span class="python-icon">🐍</span>
+                </div>
+                <div>
+                    <h1 class="app-title">PyFlow Studio</h1>
+                    <p class="app-tagline">Interactive Python Web Application &bull; Ready for Netlify</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <div id="runtime-status" class="runtime-badge">
+                    <span class="status-dot pulsing"></span>
+                    <span id="runtime-text">Python Engine: Booting...</span>
+                </div>
+                <button id="btn-deploy-guide" class="btn-primary-gradient">
+                    <span class="icon">🚀</span> Host on Netlify
+                </button>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs" role="tablist">
+            <button class="tab-btn active" data-tab="tab-strings" id="nav-strings-tab">
+                <span class="tab-icon">🔤</span> String &amp; Text Studio
+            </button>
+            <button class="tab-btn" data-tab="tab-repl" id="nav-repl-tab">
+                <span class="tab-icon">⚡</span> Live Python Runner
+            </button>
+            <button class="tab-btn" data-tab="tab-types" id="nav-types-tab">
+                <span class="tab-icon">🔢</span> Types &amp; Numbers
+            </button>
+            <button class="tab-btn" data-tab="tab-netlify" id="nav-netlify-tab">
+                <span class="tab-icon">🌐</span> Netlify Guide
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- TAB 1: String & Text Studio -->
+            <section id="tab-strings" class="tab-pane active">
+                <div class="section-intro">
+                    <h2>Python String Lab &amp; Visualizer</h2>
+                    <p>Live Python string analysis, slicing visualizer, membership checks, and transforms powered by Python.</p>
+                </div>
+
+                <div class="grid-2col">
+                    <!-- Left: Input & Slicing -->
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h3><span class="card-icon">📝</span> Input Text</h3>
+                            <div class="preset-links">
+                                <span>Try sample:</span>
+                                <button class="btn-text-preset" data-text="The best things in life are free and Python makes them simple!">Life</button>
+                                <button class="btn-text-preset" data-text="banana father mother ghana orange">Words</button>
+                                <button class="btn-text-preset" data-text="Yoo this is Johnny's house let's have some fun!">Johnny</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <textarea id="str-input" class="modern-textarea" rows="4" placeholder="Enter any text here to analyze with Python...">The best things in life are free and Python makes them simple!</textarea>
+
+                            <!-- Substring Search -->
+                            <div class="search-box-row">
+                                <div class="input-with-label">
+                                    <label for="str-search">Search Substring (<code>query in text</code>):</label>
+                                    <div class="search-input-wrap">
+                                        <input type="text" id="str-search" class="modern-input" value="Python" placeholder="Search substring...">
+                                        <button id="btn-search-check" class="btn-small">Check Presence</button>
+                                    </div>
+                                </div>
+                                <div id="search-result-pill" class="result-pill true">
+                                    <span class="pill-label">In text:</span>
+                                    <strong id="search-bool">True</strong>
+                                    <span id="search-count" class="pill-sub">(1 match)</span>
+                                </div>
+                            </div>
+
+                            <!-- Python Slicing Controls -->
+                            <div class="slicing-panel">
+                                <div class="slicing-title">
+                                    <h4>Python Slicing: <code>text[<span id="slice-disp-start">0</span>:<span id="slice-disp-end">15</span>:<span id="slice-disp-step">1</span>]</code></h4>
+                                    <button id="btn-reset-slice" class="btn-xs">Reset</button>
+                                </div>
+
+                                <div class="slice-inputs-grid">
+                                    <div class="slice-field">
+                                        <label for="slice-start">Start:</label>
+                                        <input type="number" id="slice-start" class="modern-input-num" value="0">
+                                    </div>
+                                    <div class="slice-field">
+                                        <label for="slice-end">End:</label>
+                                        <input type="number" id="slice-end" class="modern-input-num" value="15">
+                                    </div>
+                                    <div class="slice-field">
+                                        <label for="slice-step">Step:</label>
+                                        <input type="number" id="slice-step" class="modern-input-num" value="1">
+                                    </div>
+                                    <button id="btn-apply-slice" class="btn-slice-apply">Slice</button>
+                                </div>
+
+                                <div class="slice-preview-box">
+                                    <span class="slice-label">Slice Result:</span>
+                                    <code id="slice-result-text" class="slice-highlight">The best things</code>
+                                </div>
+
+                                <!-- Visual Character Tape -->
+                                <div class="char-tape-container">
+                                    <label>Visual Index Tape:</label>
+                                    <div id="char-tape" class="char-tape">
+                                        <!-- Populated dynamically by Python -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Live Metrics & Transformations -->
+                    <div class="right-col-stack">
+                        <!-- Stats Grid -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3><span class="card-icon">📊</span> Python String Metrics</h3>
+                                <span class="badge-code">Python len()</span>
+                            </div>
+                            <div class="stats-grid">
+                                <div class="stat-box">
+                                    <span class="stat-label">Length <code>len(t)</code></span>
+                                    <span id="stat-length" class="stat-value">59</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-label">Words <code>split()</code></span>
+                                    <span id="stat-words" class="stat-value">10</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-label">Vowels</span>
+                                    <span id="stat-vowels" class="stat-value">17</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-label">Consonants</span>
+                                    <span id="stat-consonants" class="stat-value">33</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-label">Digits</span>
+                                    <span id="stat-digits" class="stat-value">0</span>
+                                </div>
+                                <div class="stat-box">
+                                    <span class="stat-label">Spaces</span>
+                                    <span id="stat-spaces" class="stat-value">9</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transformations -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3><span class="card-icon">✨</span> Python Transformations</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="transform-buttons-wrap">
+                                    <button class="btn-transform" data-action="upper"><code>.upper()</code></button>
+                                    <button class="btn-transform" data-action="lower"><code>.lower()</code></button>
+                                    <button class="btn-transform" data-action="title"><code>.title()</code></button>
+                                    <button class="btn-transform" data-action="swapcase"><code>.swapcase()</code></button>
+                                    <button class="btn-transform" data-action="reverse"><code>[::-1]</code> (Reverse)</button>
+                                    <button class="btn-transform" data-action="snake"><code>snake_case</code></button>
+                                </div>
+                                <div class="transform-output-box">
+                                    <div class="output-header">
+                                        <span id="transform-type-badge" class="badge-subtle">Output</span>
+                                        <button id="btn-copy-transform" class="btn-xs">Copy</button>
+                                    </div>
+                                    <div id="transform-output" class="transform-result">THE BEST THINGS IN LIFE ARE FREE AND PYTHON MAKES THEM SIMPLE!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: Live Python Runner -->
+            <section id="tab-repl" class="tab-pane">
+                <div class="section-intro">
+                    <h2>Live Python Code Runner</h2>
+                    <p>Execute real Python code in your browser via WebAssembly. Capture standard output, loops, functions, and errors.</p>
+                </div>
+
+                <div class="repl-layout">
+                    <!-- Left: Code Editor Area -->
+                    <div class="card glass-card editor-card">
+                        <div class="card-header editor-header">
+                            <div class="editor-header-left">
+                                <span class="file-tab active">
+                                    <span class="py-icon">🐍</span> script.py
+                                </span>
+                            </div>
+                            <div class="preset-dropdown-wrap">
+                                <label for="code-preset-select">Load Example:</label>
+                                <select id="code-preset-select" class="modern-select">
+                                    <option value="strings">String Loops &amp; Slicing (strings.py)</option>
+                                    <option value="datatypes">Data Types &amp; Casting</option>
+                                    <option value="fibonacci">Fibonacci &amp; Math</option>
+                                    <option value="wordcounter">Word Frequency Counter</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body editor-body">
+                            <textarea id="python-code-input" class="code-editor-textarea" spellcheck="false"># Python Interactive Code Runner
+print("--- String Iteration Demo ---")
+for char in "banana":
+    print(f"Letter: {char}")
+
+txt = "The best things in life are free"
+print(f"\nChecking membership:")
+print(f"'free' in txt -> {'free' in txt}")
+print(f"Length of txt -> {len(txt)}")
+
+# Slicing demo
+word = "Python"
+print(f"\nSlicing '{word}':")
+print(f"word[0:2] -> '{word[0:2]}'")
+print(f"word[::-1] (reversed) -> '{word[::-1]}'")
+</textarea>
+                            <div class="editor-footer">
+                                <div class="shortcut-hint">
+                                    <span>Shortcut: <strong>Ctrl + Enter</strong> to run</span>
+                                </div>
+                                <div class="editor-actions">
+                                    <button id="btn-clear-code" class="btn-secondary">Clear</button>
+                                    <button id="btn-run-code" class="btn-run-gradient">
+                                        <span class="icon">▶</span> Run Code
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Terminal Output Area -->
+                    <div class="card glass-card terminal-card">
+                        <div class="terminal-header">
+                            <div class="window-dots">
+                                <span class="dot dot-red"></span>
+                                <span class="dot dot-yellow"></span>
+                                <span class="dot dot-green"></span>
+                            </div>
+                            <span class="terminal-title">Python Stdout Terminal</span>
+                            <div class="terminal-actions">
+                                <span id="execution-time" class="exec-time-badge">⚡ Ready</span>
+                                <button id="btn-clear-terminal" class="btn-xs">Clear</button>
+                            </div>
+                        </div>
+                        <div class="terminal-body">
+                            <pre id="terminal-output" class="terminal-text">Press "▶ Run Code" or hit Ctrl+Enter to execute Python code!</pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: Types & Numbers -->
+            <section id="tab-types" class="tab-pane">
+                <div class="section-intro">
+                    <h2>Python Types &amp; Numbers Explorer</h2>
+                    <p>Inspect Python data types, type casting rules, truthiness, and number representations.</p>
+                </div>
+
+                <div class="grid-2col">
+                    <!-- Type Inspector -->
+                    <div class="card glass-card">
+                        <div class="card-header">
+                            <h3><span class="card-icon">🔍</span> Type &amp; Casting Inspector</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-with-label">
+                                <label for="type-input-val">Enter a Python value or literal:</label>
+                                <div class="search-input-wrap">
+                                    <input type="text" id="type-input-val" class="modern-input" value="42.5" placeholder="e.g. 42, 'hello', [1, 2], True">
+                                    <button id="btn-inspect-type" class="btn-small">Inspect</button>
+                                </div>
+                            </div>
+
+                            <div class="type-results-table">
+                                <div class="type-row">
+                                    <span class="type-key"><code>type(x)</code></span>
+                                    <strong id="res-type-name" class="type-val">&lt;class 'float'&gt;</strong>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-key"><code>int(x)</code></span>
+                                    <span id="res-int-cast" class="type-val">42</span>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-key"><code>float(x)</code></span>
+                                    <span id="res-float-cast" class="type-val">42.5</span>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-key"><code>str(x)</code></span>
+                                    <span id="res-str-cast" class="type-val">'42.5'</span>
+                                </div>
+                                <div class="type-row">
+                                    <span class="type-key"><code>bool(x)</code> (Truthiness)</span>
+                                    <span id="res-bool-cast" class="type-val bool-true">True</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Truthiness & Number Bases -->
+                    <div class="right-col-stack">
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3><span class="card-icon">🔢</span> Number Base Representations</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="input-with-label">
+                                    <label for="num-base-val">Integer Value:</label>
+                                    <input type="number" id="num-base-val" class="modern-input" value="255">
+                                </div>
+                                <div class="base-grid">
+                                    <div class="base-box">
+                                        <span class="base-label">Decimal</span>
+                                        <code id="base-dec">255</code>
+                                    </div>
+                                    <div class="base-box">
+                                        <span class="base-label">Binary <code>bin()</code></span>
+                                        <code id="base-bin">0b11111111</code>
+                                    </div>
+                                    <div class="base-box">
+                                        <span class="base-label">Hex <code>hex()</code></span>
+                                        <code id="base-hex">0xff</code>
+                                    </div>
+                                    <div class="base-box">
+                                        <span class="base-label">Octal <code>oct()</code></span>
+                                        <code id="base-oct">0o377</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3><span class="card-icon">⚖️</span> Python Truthiness Guide</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="truth-grid">
+                                    <div class="truth-item falsy"><code>0</code> &rarr; False</div>
+                                    <div class="truth-item falsy"><code>""</code> (empty str) &rarr; False</div>
+                                    <div class="truth-item falsy"><code>[]</code> (empty list) &rarr; False</div>
+                                    <div class="truth-item falsy"><code>None</code> &rarr; False</div>
+                                    <div class="truth-item truthy"><code>1</code> &rarr; True</div>
+                                    <div class="truth-item truthy"><code>"hello"</code> &rarr; True</div>
+                                    <div class="truth-item truthy"><code>[0]</code> (non-empty) &rarr; True</div>
+                                    <div class="truth-item truthy"><code>-5</code> &rarr; True</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: Netlify Deployment Guide -->
+            <section id="tab-netlify" class="tab-pane">
+                <div class="section-intro">
+                    <h2>How to Host This Python Web App on Netlify</h2>
+                    <p>Netlify serves this entire web application seamlessly. Because PyScript runs Python in the browser with WebAssembly, no expensive backend servers or complicated Docker containers are needed!</p>
+                </div>
+
+                <div class="netlify-steps-grid">
+                    <!-- Method 1: Netlify Drop -->
+                    <div class="card glass-card step-card highlight-step">
+                        <div class="step-badge">Fastest (10 seconds)</div>
+                        <h3>Method 1: Drag &amp; Drop to Netlify Drop</h3>
+                        <p>No Git commands or terminal required. Deploy instantly from your Windows folder:</p>
+                        <ol class="step-list">
+                            <li>Open <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">app.netlify.com/drop</a> in your web browser.</li>
+                            <li>Sign in or create a free Netlify account.</li>
+                            <li>Open File Explorer and navigate to this workspace:
+                                <div class="code-copy-box">
+                                    <code>d:\GIT\newtopython</code>
+                                    <button class="btn-copy-code" data-copy="d:\GIT\newtopython">Copy</button>
+                                </div>
+                            </li>
+                            <li>Drag the entire folder and drop it into the designated upload area on the Netlify webpage.</li>
+                            <li>Your Python web application is live instantly with an HTTPS <code>.netlify.app</code> URL! 🎉</li>
+                        </ol>
+                    </div>
+
+                    <!-- Method 2: Git Continuous Deployment -->
+                    <div class="card glass-card step-card">
+                        <div class="step-badge">Recommended</div>
+                        <h3>Method 2: Automatic Git Deployment</h3>
+                        <p>Automatically redeploys every time you push code to GitHub:</p>
+                        <ol class="step-list">
+                            <li>Push your project to GitHub:
+                                <div class="code-copy-box">
+                                    <code>git add .<br>git commit -m "Add Python web application"<br>git push origin main</code>
+                                    <button class="btn-copy-code" data-copy="git add . && git commit -m &quot;Add Python web application&quot; && git push origin main">Copy</button>
+                                </div>
+                            </li>
+                            <li>Go to <a href="https://app.netlify.com" target="_blank" rel="noopener">app.netlify.com</a> and click <strong>Add new site</strong> &rarr; <strong>Import an existing project</strong>.</li>
+                            <li>Select your GitHub repository.</li>
+                            <li>Configure build settings:
+                                <ul class="inner-sublist">
+                                    <li><strong>Build command:</strong> Leave empty (or <code>echo done</code>)</li>
+                                    <li><strong>Publish directory:</strong> <code>.</code> (root)</li>
+                                </ul>
+                            </li>
+                            <li>Click <strong>Deploy Site</strong>. Your site is continuously deployed!</li>
+                        </ol>
+                    </div>
+
+                    <!-- Method 3: Netlify CLI -->
+                    <div class="card glass-card step-card">
+                        <div class="step-badge">CLI Option</div>
+                        <h3>Method 3: Deploy via Netlify CLI</h3>
+                        <p>Deploy directly from PowerShell without leaving your terminal:</p>
+                        <div class="code-copy-box cli-box">
+                            <code># Deploy to a live production URL<br>npx netlify deploy --prod --dir=.</code>
+                            <button class="btn-copy-code" data-copy="npx netlify deploy --prod --dir=.">Copy</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Local Server instructions -->
+                <div class="card glass-card local-test-card">
+                    <div class="card-header">
+                        <h3><span class="card-icon">💻</span> How to Test Locally</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>We created a custom Python server script (<code>server.py</code>). To test this web application right now on your machine:</p>
+                        <div class="code-copy-box">
+                            <code>py server.py</code>
+                            <button class="btn-copy-code" data-copy="py server.py">Copy</button>
+                        </div>
+                        <p class="subtext">Then open <strong>http://localhost:8080</strong> in your web browser.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>Built with 🐍 <strong>Python</strong> &amp; <strong>PyScript WebAssembly</strong> &bull; Configured for instant <strong>Netlify</strong> hosting</p>
+        </footer>
+    </div>
+
+    <!-- Core Python Application Script -->
+    <script type="mpy" src="./app.py"></script>
+
+    <!-- UI Helper JavaScript for Tabs, Presets, and Clipboard -->
+    <script src="ui.js"></script>
+</body>
+</html>

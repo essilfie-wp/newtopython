@@ -17,3 +17,8 @@ print(bool(y))
 bool("abc")
 bool(234)
 bool({"money", "bread", "guap"})
+
+print(bool(False))
+print(bool(None))
+print(bool({}))
+print(bool([]))

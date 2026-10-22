@@ -15,3 +15,10 @@ print(x/y)
 x = 12
 y = 5
 print(x // y)
+y+=3
+print(y)
+x%=78
+print(x)
+numbers={1,2,3,4,5}
+if (count:= len(numbers))> 3:
+    print(f"List has {count} numbers")

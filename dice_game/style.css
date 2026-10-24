@@ -1,0 +1,214 @@
+/* Simple Dice Game - Minimal & Clean Styling */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.game-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 520px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: #38bdf8;
+}
+
+/* Scoreboard */
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    background: #0f172a;
+    border-radius: 12px;
+    padding: 0.85rem;
+    margin-bottom: 1.75rem;
+    border: 1px solid #334155;
+}
+
+.score-item span {
+    display: block;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.score-item strong {
+    font-size: 1.4rem;
+    color: #f8fafc;
+}
+
+/* Arena */
+.arena {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.player-panel {
+    flex: 1;
+    background: #0f172a;
+    padding: 1rem 0.75rem;
+    border-radius: 14px;
+    border: 1px solid #334155;
+}
+
+.player-panel h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    color: #cbd5e1;
+}
+
+.dice-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+}
+
+.vs-badge {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.total-pill {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 600;
+}
+
+/* Dice Design */
+.die {
+    width: 54px;
+    height: 54px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    padding: 6px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.die.shake {
+    animation: shakeAnim 0.4s ease-in-out;
+}
+
+@keyframes shakeAnim {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    25% {
+        transform: rotate(-15deg) scale(1.08);
+    }
+
+    50% {
+        transform: rotate(15deg) scale(1.08);
+    }
+
+    75% {
+        transform: rotate(-10deg) scale(1.05);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.pip {
+    width: 9px;
+    height: 9px;
+    background: #0f172a;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+}
+
+/* Result Message */
+.result-msg {
+    font-size: 1.15rem;
+    font-weight: 700;
+    min-height: 1.7rem;
+    margin-bottom: 1.5rem;
+    color: #38bdf8;
+}
+
+.result-msg.player {
+    color: #4ade80;
+}
+
+.result-msg.computer {
+    color: #f87171;
+}
+
+.result-msg.tie {
+    color: #fbbf24;
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    gap: 0.75rem;
+}
+
+button {
+    flex: 1;
+    padding: 0.85rem 1.25rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-roll {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+.btn-roll:hover:not(:disabled) {
+    background: #0ea5e9;
+    transform: translateY(-1px);
+}
+
+.btn-roll:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.btn-reset {
+    background: #334155;
+    color: #cbd5e1;
+}
+
+.btn-reset:hover {
+    background: #475569;
+    color: #ffffff;
+}

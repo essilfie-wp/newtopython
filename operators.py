@@ -39,3 +39,15 @@ print(x)
 num=6
 x="Fri" if num == 5 else "Sat" if num== 6 else "Sun" if num == 7 else "worday"
 print(x)
+oddnumbers =[1,3,5,7,9,11,13,15,17,19]
+total=sum(oddnumbers)
+print(total)
+
+total=0
+for n in range(1,100,2):
+   total+=n
+print(total)
+#the sum of the first ten fibonacci numbers
+fibonacci=[0,1,1,2,3,5,8,13,21,34,55]
+total=sum(fibonacci)
+print(total)

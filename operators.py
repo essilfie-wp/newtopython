@@ -51,3 +51,12 @@ print(total)
 fibonacci=[0,1,1,2,3,5,8,13,21,34,55]
 total=sum(fibonacci)
 print(total)
+#logical operaators
+x=4
+y=7
+print(x==y)
+print(x!=y)
+print(x>=y)
+x=7
+print(3>x>8)
+print(x<3 and x<8)

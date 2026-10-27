@@ -64,3 +64,11 @@ x=5
 print(x>4 and x>8)
 print(x>1 or x>10)
 print(not(x>1 and x>10))
+x=["apple", "banana"]
+y=["apple", "banana"]
+z=x
+print(x is z)
+print(x is y)
+print(x==y)
+print(z is not y)
+print(x==y)

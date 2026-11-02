@@ -79,3 +79,6 @@ print("watermelon" not in fruits)
 x="hello world"
 print("hello" in x)
 print("y" not in x)
+print(8&4)
+print(6|3)
+print(7^7)

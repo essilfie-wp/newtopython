@@ -72,3 +72,10 @@ print(x is y)
 print(x==y)
 print(z is not y)
 print(x==y)
+
+fruits={"apple", "banana", "cherry"}
+print("banana" in fruits)
+print("watermelon" not in fruits)
+x="hello world"
+print("hello" in x)
+print("y" not in x)

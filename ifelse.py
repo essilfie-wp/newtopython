@@ -46,3 +46,33 @@ elif day == 6:
   print("Saturday")
 elif day == 7:
   print("Sunday")
+
+x=5
+y=56
+if x>y:
+     print("x is greater than y")
+elif x==y:
+     print("x is equal to y")
+else:
+       print("x is less than y") 
+
+if x>y:
+     print("x is greater than y")
+else:
+   print("x is less than y")
+
+temperature = 22
+if temperature > 30:
+  print("It's hot outside!")
+elif temperature > 20:
+  print("It's warm outside")
+elif temperature > 10:
+  print("It's cool outside")
+else:
+  print("It's cold outside!")
+
+username="Matthew"
+if len(username)>0:
+   print(f"Welcome, {username}!")
+else:
+  print("Error 234: Username cannot be empty")

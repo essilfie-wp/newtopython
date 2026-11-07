@@ -82,3 +82,8 @@ print("y" not in x)
 print(8&4)
 print(6|3)
 print(7^7)
+a=15
+b=4
+print(a%b)
+#operator precedence
+print((6+7)+(3*4))
